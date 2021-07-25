@@ -4,10 +4,10 @@ const Bodies = Matter.Bodies;
 
 var engine, world;
 var background, backgroundImg;
-var snowflake;
+var snowflakes=[];
 
 function preload(){
-backgroundImg = loadImage("snow1.jpg");1
+backgroundImg = loadImage("snow1.jpg");
 }
 
 function setup() {
@@ -28,9 +28,12 @@ function draw() {
 
   
   
-    for (var h = 0; h<snowflakes.length; h++) {
-      snowflakes[h].display();
-    }
+  if(frameCount%60===0){ 
+    snowflakes.push(new Snowflake(random(width/2-30, width/2+30), 10,10)); 
+  } 
+  for (var j = 0; j < snowflakes.length; j++) {
+     snowflakes[j].display();
+  } 
 
     snowflake.display();
     

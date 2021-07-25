@@ -1,13 +1,12 @@
 class Snowflake{
-constructor(x,y,r)
-{
+constructor(x,y,width,height){
    var options = {
     'restitution':0.04,
     'friction':0,
     'density':0.01
    } 
-   this.r = r;
-   this.body = Bodies.circle(x, y, this.r, options);
+   
+   this.body = Bodies.rectangle(x, y, width, height, options); 
    this.image = loadImage("snow4.webp");
    World.add(world, this.body);
    
@@ -15,16 +14,14 @@ constructor(x,y,r)
  }
  display()
  {
-    var pos = this.body.position;
-    var angle = this.body.angle;
-
-    push();
-    translate(pos.x, pos.y);
-    rotate(angle);
-    imageMode(CENTER);
-    noStroke();
-    ellipseMode(RADIUS);
-    ellipse(this.image,this.body.position.x,this.body.position.y,this.r,this.r);
-    pop();
+   var pos = this.body.position; 
+   var angle = this.body.angle; 
+   push();
+   translate(pos.x, pos.y); 
+   rotate(angle); 
+   imageMode(CENTER);
+   image(this.image,0,0,this.width,this.height); 
+   this.image.scale=0.2; 
+   pop(); 
  }
 } 
