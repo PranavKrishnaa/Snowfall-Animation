@@ -15,11 +15,11 @@ function setup() {
   engine = Engine.create();
   world = engine.world;
 
-  snowflakes = new Snowflake(200,200,10);
+  snowflake = new Snowflake(200,200,10);
 
   if (frameCount % 60 === 0) {
-    snowflake.push(new Snowflake(random(width/2-10, width/2+10),10,10));
-    }
+    snowflakes.push(new Snowflake(random(width/2-10, width/2+10),10,10));   
+ }
 
 }
 

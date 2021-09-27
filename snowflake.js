@@ -21,7 +21,7 @@ constructor(x,y,width,height){
    rotate(angle); 
    imageMode(CENTER);
    image(this.image,0,0,this.width,this.height); 
-   this.image.scale=0.2; 
+   this.image.scale=0.05; 
    pop(); 
  }
 } 
