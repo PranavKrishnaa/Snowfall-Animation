@@ -1,42 +1,27 @@
-const Engine = Matter.Engine;
-const World = Matter.World;
-const Bodies = Matter.Bodies;
-
-var engine, world;
-var background, backgroundImg;
-var snowflakes=[];
+var snowflake, snowflakeImg, bg;
 
 function preload(){
-backgroundImg = loadImage("snow1.jpg");
+bg = loadImage("snow3.jpg");
+snowflakeImg = loadImage("snow4.webp");
 }
 
 function setup() {
-  createCanvas(800,600);
-  engine = Engine.create();
-  world = engine.world;
-
-  snowflake = new Snowflake(200,200,10);
-
-  if (frameCount % 60 === 0) {
-    snowflakes.push(new Snowflake(random(width/2-10, width/2+10),10,10));   
- }
-
+  createCanvas(800,400);
+ 
 }
 
 function draw() {
-  background(backgroundImg);  
-
-  
-  
-  if(frameCount%60===0){ 
-    snowflakes.push(new Snowflake(random(width/2-30, width/2+30), 10,10)); 
-  } 
-  for (var j = 0; j < snowflakes.length; j++) {
-     snowflakes[j].display();
-  } 
-
-    snowflake.display();
-    
+  background(bg);  
+  createSnowflakes();
   drawSprites();
 }
-
+ 
+function createSnowflakes(){
+  if(frameCount % 15 === 0){
+    snowflake = createSprite(random(0,800),0,50,50);
+    snowflake.velocityX = 0.25;
+    snowflake.velocityY = 2;
+    snowflake.addImage(snowflakeImg);
+    snowflake.scale = 0.1;
+  }
+}
